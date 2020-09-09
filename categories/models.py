@@ -9,6 +9,7 @@ class Category(models.Model):
     slug = models.SlugField(max_length=200, db_index=True, unique=True)
 
     created = models.DateTimeField(auto_now_add=True)
+    updated_at=models.DateTimeField(auto_now=True,editable=False)
 
 
     class Meta:

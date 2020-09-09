@@ -13,6 +13,7 @@ from django.core import serializers
 from products.serializers import ProductSerializer
 
 from django_filters.rest_framework import DjangoFilterBackend
+
 # Create your views here.
 class ProductViewSet(viewsets.ModelViewSet):
     """
@@ -23,7 +24,7 @@ class ProductViewSet(viewsets.ModelViewSet):
     serializer_class = ProductSerializer
     # filter_backends = [django_filters.rest_framework.DjangoFilterBackend]
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['name']
+    filterset_fields = ["name"]
 
     def create(self, request):
         today = datetime.date.today()
@@ -42,4 +43,18 @@ class ProductViewSet(viewsets.ModelViewSet):
         else:
 
             return Response(serializer.errors)
+
+    def partial_update(self, request, *args, **kwargs):
+        instance = self.get_object()
+        serializer = self.serializer(instance, data=request.data, partial=True)
+        serializer.is_valid(raise_exception=True)
+
+        today = datetime.date.today()
+
+        todays_records = Product.objects.filter(created__gt=today)[:10]
+        if todays_records.count() > 10:
+            raise APIException("today limit reached")
+
+        serializer.save()
+        return Response(serializer.data)
 
