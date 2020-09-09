@@ -20,7 +20,7 @@ class ProductViewSet(viewsets.ModelViewSet):
     API endpoint that allows users to be viewed or edited.
     """
 
-    queryset = Product.objects.all()
+    queryset = Product.objects.all().order_by("-created")
     serializer_class = ProductSerializer
     # filter_backends = [django_filters.rest_framework.DjangoFilterBackend]
     filter_backends = [DjangoFilterBackend]
@@ -28,20 +28,15 @@ class ProductViewSet(viewsets.ModelViewSet):
 
     def create(self, request):
         today = datetime.date.today()
-
         todays_records = Product.objects.filter(created__gt=today)[:10]
         if todays_records.count() > 10:
             raise APIException("today limit reached")
-
         data = request.data.copy()
-
         serializer = ProductSerializer(data=data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
-
         else:
-
             return Response(serializer.errors)
 
     def partial_update(self, request, *args, **kwargs):
@@ -51,7 +46,7 @@ class ProductViewSet(viewsets.ModelViewSet):
 
         today = datetime.date.today()
 
-        todays_records = Product.objects.filter(created__gt=today)[:10]
+        todays_records = Product.objects.filter(updated_at__gt=today)[:10]
         if todays_records.count() > 10:
             raise APIException("today limit reached")
 
