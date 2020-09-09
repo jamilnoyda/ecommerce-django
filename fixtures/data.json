@@ -1,0 +1,110 @@
+[
+    {
+        "model": "products.product",
+        "pk": 2,
+        "fields": {
+            "category": 2,
+            "slug": "tvdd",
+            "name": "TV",
+            "price": "2222.00",
+            "quantity": 2,
+            "created": "2020-09-09T08:29:03.339Z",
+            "updated_at": "2020-09-09T09:39:10.302Z"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 3,
+        "fields": {
+            "category": 4,
+            "slug": "jeans",
+            "name": "Jeans",
+            "price": "4444.00",
+            "quantity": 444,
+            "created": "2020-09-09T08:29:03.339Z",
+            "updated_at": "2020-09-09T09:39:10.302Z"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 4,
+        "fields": {
+            "category": 3,
+            "slug": "book-2",
+            "name": "book two",
+            "price": "4343.00",
+            "quantity": 4,
+            "created": "2020-09-09T08:29:03.339Z",
+            "updated_at": "2020-09-09T09:39:10.302Z"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 5,
+        "fields": {
+            "category": 4,
+            "slug": "bed",
+            "name": "bed",
+            "price": "432423.00",
+            "quantity": 4324,
+            "created": "2020-09-09T08:30:27.197Z",
+            "updated_at": "2020-09-09T09:39:10.302Z"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 6,
+        "fields": {
+            "category": 4,
+            "slug": "bed2",
+            "name": "bed2",
+            "price": "432423.00",
+            "quantity": 4324,
+            "created": "2020-09-09T08:31:42.460Z",
+            "updated_at": "2020-09-09T09:39:10.302Z"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 7,
+        "fields": {
+            "category": 4,
+            "slug": "bed3",
+            "name": "bed3",
+            "price": "432423.00",
+            "quantity": 4324,
+            "created": "2020-09-09T08:31:54.133Z",
+            "updated_at": "2020-09-09T09:39:10.302Z"
+        }
+    },
+    {
+        "model": "categories.category",
+        "pk": 2,
+        "fields": {
+            "name": "Electronic",
+            "slug": "electronic",
+            "created": "2020-09-09T08:28:32.281Z",
+            "updated_at": "2020-09-09T09:39:10.223Z"
+        }
+    },
+    {
+        "model": "categories.category",
+        "pk": 3,
+        "fields": {
+            "name": "Books",
+            "slug": "books",
+            "created": "2020-09-09T08:28:32.281Z",
+            "updated_at": "2020-09-09T09:39:10.223Z"
+        }
+    },
+    {
+        "model": "categories.category",
+        "pk": 4,
+        "fields": {
+            "name": "clothing",
+            "slug": "clothing",
+            "created": "2020-09-09T08:28:32.281Z",
+            "updated_at": "2020-09-09T09:39:10.223Z"
+        }
+    }
+]
