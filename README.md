@@ -9,16 +9,17 @@
 8. Update the code with proper to github and share the link
 
 
-##used black linting
-3. install fixtures
-4. requirements
-5. migrations
-6. 
-7. admin username and pass jamilnoyda hellohello
+- used black linting
+
+- install fixtures
+- requirements
+- migrations
+ 
+- admin username and pass jamilnoyda hellohello
 
 
-#coudl be done if have would some time
+#could be done if i  would  have sometime
 
-oauth2 toolkit
-override djagno default User
-slug field for SEO
+- oauth2 toolkit
+- override djagno default User
+- slug field for SEO
