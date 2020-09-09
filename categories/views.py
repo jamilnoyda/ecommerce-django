@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django_filters.rest_framework import DjangoFilterBackend
 
 from rest_framework.response import Response
-
+import datetime
 from rest_framework import viewsets
 import json
 from categories.models import Category
@@ -23,12 +23,11 @@ class CategoryViewSet(viewsets.ModelViewSet):
     queryset = Category.objects.all().order_by("-created")
     serializer_class = CategorySerializer
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['name']
-    
+    filterset_fields = ["name"]
 
     def partial_update(self, request, *args, **kwargs):
         instance = self.get_object()
-        serializer = self.serializer(instance, data=request.data, partial=True)
+        serializer = self.serializer_class(instance, data=request.data, partial=True)
         serializer.is_valid(raise_exception=True)
 
         today = datetime.date.today()
@@ -39,5 +38,4 @@ class CategoryViewSet(viewsets.ModelViewSet):
 
         serializer.save()
         return Response(serializer.data)
-
 

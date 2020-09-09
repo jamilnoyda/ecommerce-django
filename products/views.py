@@ -41,7 +41,7 @@ class ProductViewSet(viewsets.ModelViewSet):
 
     def partial_update(self, request, *args, **kwargs):
         instance = self.get_object()
-        serializer = self.serializer(instance, data=request.data, partial=True)
+        serializer = self.serializer_class(instance, data=request.data, partial=True)
         serializer.is_valid(raise_exception=True)
 
         today = datetime.date.today()
