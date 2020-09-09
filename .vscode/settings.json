@@ -1,0 +1,8 @@
+{
+    "python.formatting.provider": "black",
+    "python.pythonPath": "/home/jahid/code/posts-backend/venv/bin/python3.8",
+    "python.formatting.autopep8Args": [
+        "--line-length",
+        "120"
+    ]
+}
