@@ -1,23 +1,26 @@
 from django.shortcuts import render
+from django_filters.rest_framework import DjangoFilterBackend
 
 
 from rest_framework import viewsets
 import json
-from products.models import Product
+from categories.models import Category
 from rest_framework import permissions
 
 
 from django.core import serializers
-from products.serializers import ProductSerializer
+from categories.serializers import CategorySerializer
 
 
 # Create your views here.
-class ProductViewSet(viewsets.ModelViewSet):
+class CategoryViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows users to be viewed or edited.
     """
 
-    queryset = Product.objects.all()
-    serializer_class = ProductSerializer
-    # permission_classes = [permissions.IsAuthenticated]
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['name']
+    
 

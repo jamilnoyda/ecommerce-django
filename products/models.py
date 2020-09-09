@@ -4,7 +4,6 @@ from django.urls import reverse
 
 # Create your models here.
 
-
 class Product(models.Model):
     class Meta:
         ordering = ("name",)
@@ -18,9 +17,14 @@ class Product(models.Model):
     name = models.CharField(max_length=200, db_index=True)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     quantity = models.PositiveIntegerField()
+    created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.name
+
+    # def record_count():
+    #     todays_records = 
+    #     return 1
 
     # def get_absolute_url(self):
     # return reverse("shop:product_detail", args=[self.id, self.slug])

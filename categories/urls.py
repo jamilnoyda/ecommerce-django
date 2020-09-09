@@ -1,12 +1,12 @@
 from django.urls import include, path
 from rest_framework import routers
-from products import views
+from categories import views
 
 router = routers.DefaultRouter()
-router.register(r"product", views.ProductViewSet)
+router.register(r"categories", views.CategoryViewSet)
 
-app_name = "products"
+app_name = "categories"
 urlpatterns = [
-    # path("api-token-auth/", views.obtain_auth_token),
+    
     path("", include(router.urls,)),
 ]

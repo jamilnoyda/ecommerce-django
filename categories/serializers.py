@@ -1,12 +1,11 @@
 from django.contrib.auth.models import Group
 from rest_framework import serializers
 
-from django.contrib.auth.models import User
+from categories.models import Category
 
-
-class ProductSerializer(serializers.ModelSerializer):
+class CategorySerializer(serializers.ModelSerializer):
     class Meta:
-        model = User
+        model = Category
 
         fields = "__all__"
 

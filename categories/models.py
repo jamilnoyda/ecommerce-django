@@ -8,6 +8,9 @@ class Category(models.Model):
     name = models.CharField(max_length=200, db_index=True)
     slug = models.SlugField(max_length=200, db_index=True, unique=True)
 
+    created = models.DateTimeField(auto_now_add=True)
+
+
     class Meta:
         ordering = ("name",)
         verbose_name = "Category"
