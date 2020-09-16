@@ -7,6 +7,7 @@
 6. Create Basic UI to list out all the producs for end user 
 7. You have to use django rest framework for writing api for Category and Product both 
 8. Update the code with proper to github and share the link
+9. slug field for SEO
 
 
 - used black linting
@@ -22,4 +23,3 @@
 
 - oauth2 toolkit
 - override djagno default User
-- slug field for SEO
