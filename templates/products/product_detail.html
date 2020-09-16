@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{ object.name }} details
+
+{% endblock %}
+
+{% block content %}
+<h2>{{ object.name }}</h2>
+
+
+<p>{{ object.price }}</p>
+<p>created: {{ object.created|date }}</p>
+<a href="{% url  'products:product-list' %}">go to list </a>
+
+{% endblock %}

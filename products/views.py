@@ -1,3 +1,8 @@
+from django.urls import reverse_lazy
+from django.views.generic.edit import CreateView, DeleteView, UpdateView
+from django.views.generic import ListView, DetailView
+from products.models import Product
+
 from django.shortcuts import render
 
 import datetime
@@ -11,7 +16,7 @@ from rest_framework.exceptions import APIException
 from rest_framework.response import Response
 from django.core import serializers
 from products.serializers import ProductSerializer
-
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django_filters.rest_framework import DjangoFilterBackend
 
 # Create your views here.
@@ -52,4 +57,41 @@ class ProductViewSet(viewsets.ModelViewSet):
 
         serializer.save()
         return Response(serializer.data)
+
+
+class ProductCreate(CreateView):
+
+    # class ProductCreate(LoginRequiredMixin, CreateView):
+    model = Product
+    fields = ["name","price","quantity","category"]
+
+    def form_valid(self, form):
+        form.instance.created_by = self.request.user
+        return super().form_valid(form)
+
+
+class ProductUpdate(UpdateView):
+    model = Product
+    # fields = ["name"]
+    fields = ["name","price","quantity","category"]
+
+
+class ProductDelete(DeleteView):
+    model = Product
+    success_url = reverse_lazy("products:product-list")
+
+
+class ProductList(ListView):
+    model = Product
+
+
+class ProductDetail(DetailView):
+    model = Product
+
+    # def get_object(self):
+    # obj = super().get_object()
+    # Record the last accessed date
+    # obj.last_accessed = timezone.now()
+    # obj.save()
+    # return obj
 

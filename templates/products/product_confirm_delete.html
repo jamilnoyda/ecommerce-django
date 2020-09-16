@@ -1,0 +1,22 @@
+
+
+
+{% extends "base.html" %}
+
+{% block title %} 
+{{ object.name }} are you sure you want to delete
+
+{% endblock %}
+
+{% block content %}
+
+
+<form method="post">{% csrf_token %}
+    <p>Are you sure you want to delete "{{ object }}"?</p>
+    <input type="submit" value="Confirm">
+</form>
+<a href="{% url  'products:product-list' %}">cancel and go to list </a>
+
+
+
+{% endblock %}

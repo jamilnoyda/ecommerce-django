@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block title %}
+categories list
+{% endblock %}
+
+
+{% block content %}
+<h2>category</h2>
+
+
+<a href="{% url  'categories:category-add' %}">Add </a>
+
+
+
+
+<ul>
+    {% for comment in object_list %}
+    <li>
+
+
+        <a href="{% url  'categories:category-detail' comment.id %}">{{ comment.name }} </a>
+        <a href="{% url  'categories:category-update' comment.id %}"> edit </a>
+        <a href="{% url  'categories:category-delete' comment.id %}">delete </a>
+
+
+        <ul>
+
+            {% for reply in comment.children %}
+            <li>
+
+
+                <a href="{% url  'categories:category-detail' reply.id %}">{{ reply.name }} </a>
+                <a href="{% url  'categories:category-update' reply.id %}"> edit </a>
+                <a href="{% url  'categories:category-delete' reply.id %}">delete </a>
+
+
+                <ul>
+                    {% for r in reply.children %}
+
+
+                    <li>
+
+                        <a href="{% url  'categories:category-detail' r.id %}">{{ r.name }} </a>
+                        <a href="{% url  'categories:category-update' r.id %}"> edit </a>
+                        <a href="{% url  'categories:category-delete' r.id %}">delete </a>
+
+
+
+                    </li>
+                    {% endfor %}
+
+                </ul>
+            </li>
+            {% endfor %}
+        </ul>
+
+    </li>
+    {% endfor %}
+</ul>
+
+
+
+
+
+
+
+
+{% endblock %}

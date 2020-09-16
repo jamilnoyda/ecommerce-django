@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django_filters.rest_framework import DjangoFilterBackend
+from django.urls import reverse_lazy
 
 from rest_framework.response import Response
 import datetime
@@ -7,6 +8,8 @@ from rest_framework import viewsets
 import json
 from categories.models import Category
 from rest_framework import permissions
+from django.views.generic.edit import CreateView, DeleteView, UpdateView
+from django.views.generic import ListView, DetailView
 
 from rest_framework.exceptions import APIException
 
@@ -38,4 +41,50 @@ class CategoryViewSet(viewsets.ModelViewSet):
 
         serializer.save()
         return Response(serializer.data)
+
+
+
+
+
+class CategoryCreate(CreateView):
+
+    # class CategoryCreate(LoginRequiredMixin, CreateView):
+    model = Category
+    fields = ["name","parent"]
+
+    def form_valid(self, form):
+        form.instance.created_by = self.request.user
+        return super().form_valid(form)
+
+
+class CategoryUpdate(UpdateView):
+    model = Category
+    queryset = Category.objects.filter()
+
+    # fields = ["name"]
+    fields = ["name","parent"]
+
+
+class CategoryDelete(DeleteView):
+    model = Category
+    queryset = Category.objects.filter()
+
+    success_url = reverse_lazy("products:product-list")
+
+
+class CategoryList(ListView):
+    # import pdb; pdb.set_trace()
+    model = Category
+    queryset = Category.objects.filter()
+
+
+class CategoryDetail(DetailView):
+    model = Category
+
+    # def get_object(self):
+    # obj = super().get_object()
+    # Record the last accessed date
+    # obj.last_accessed = timezone.now()
+    # obj.save()
+    # return obj
 
