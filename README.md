@@ -23,3 +23,4 @@
 
 - oauth2 toolkit
 - override djagno default User
+- redis for api cacheing
